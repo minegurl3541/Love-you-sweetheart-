@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      background: white;
+      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    #sorryBtn {
+      margin-top: 40vh;
+      padding: 20px 40px;
+      background: pink;
+      border: none;
+      border-radius: 30px;
+      font-size: 24px;
+      color: white;
+      text-shadow: 0 0 10px white, 0 0 20px white;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px white; }
+      50% { box-shadow: 0 0 30px white; }
+      100% { box-shadow: 0 0 10px white; }
+    }
+
+    #giftBox {
+      display: none;
+      font-size: 40px;
+      margin-top: 40vh;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .star {
+      position: absolute;
+      color: gold;
+      font-size: 20px;
+      animation: twinkle 2s infinite;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+      100% { opacity: 0; transform: scale(1); }
+    }
+
+    #heartContainer {
+      display: none;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .heart-image {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+    }
+
+    #loveText {
+      display: none;
+      margin-top: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: deeppink;
+      text-shadow: 0 0 10px pink, 0 0 20px red;
+      letter-spacing: 2px;
+      animation: appearText 4s steps(30, end) forwards;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+    }
+
+    @keyframes appearText {
+      to {
+        width: 100%;
+      }
+    }
+
+    .firework {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: transparent;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(40); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="sorryBtn">Sorry</button>
+
+<button id="giftBox">🎁</button>
+
+<div id="heartContainer"></div>
+<div id="loveText">I love you sweetheart forever</div>
+<audio id="bgMusic" src="https://files.catbox.moe/pjmxo8.mp3" loop></audio>
+
+<script>
+  const sorryBtn = document.getElementById('sorryBtn');
+  const giftBox = document.getElementById('giftBox');
+  const heartContainer = document.getElementById('heartContainer');
+  const loveText = document.getElementById('loveText');
+  const music = document.getElementById('bgMusic');
+
+  sorryBtn.addEventListener('click', () => {
+    sorryBtn.style.display = 'none';
+    giftBox.style.display = 'inline-block';
+    createStars();
+  });
+
+  giftBox.addEventListener('click', () => {
+    giftBox.style.display = 'none';
+    heartContainer.style.display = 'block';
+    music.play();
+    loveText.style.display = 'block';
+    createHeartImages();
+    launchFireworks();
+  });
+
+  function createStars() {
+    for (let i = 0; i < 10; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.textContent = '✨';
+      star.style.top = `${Math.random() * 100}px`;
+      star.style.left = `${Math.random() * 100}px`;
+      giftBox.appendChild(star);
+    }
+  }
+
+  function createHeartImages() {
+    const radius = 180;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2.5;
+    const images = [
+      "https://i.ibb.co/ZvsszqY/74022-DD7-8-A77-499-B-AD48-B434418-A07-DF.png",
+      "https://i.ibb.co/mr8Ts3bj/IMG-3713.jpg",
+      "https://i.ibb.co/212dc58G/IMG-3682.jpg",
+      "https://i.ibb.co/JFnRgvhn/IMG-2265.jpg",
+      "https://i.ibb.co/6RxyqmsJ/IMG-2259.jpg",
+      "https://i.ibb.co/N286QdRW/IMG-1840.jpg",
+      "https://i.ibb.co/6JqB9yNG/IMG-1167.jpg",
+      "https://i.ibb.co/sp4DqPVw/061a4f7e-769b-4a75-9093-cf1f3b7dfc33.jpg",
+      "https://i.ibb.co/fYdXsGmc/3d7ad99c-f7b5-4f91-ab90-059b6d784041.jpg",
+      "https://i.ibb.co/WNkmFts1/IMG-8588.jpg",
+      "https://i.ibb.co/PG42RPLX/IMG-8587.jpg",
+      "https://i.ibb.co/Ng6mBp3Q/3-FAA830-C-C295-4319-BEAA-A0-FEB5-BF62-AC.jpg",
+      "https://i.ibb.co/JWgtvPLJ/939b3a43-cfeb-4486-a9b0-dc0daca955eb.jpg",
+      "https://i.ibb.co/qYyk5Cgd/IMG-4088.jpg",
+      "https://i.ibb.co/Kpm8Lf4x/IMG-4085.jpg",
+      "https://i.ibb.co/nNRG3vCc/IMG-2256.jpg",
+      "https://i.ibb.co/chs0BxfP/IMG-2263.jpg",
+      "https://i.ibb.co/dYgJZqF/IMG-1109.jpg",
+      "https://i.ibb.co/xq4WJQvD/3293e8ec-0ace-4f9b-a5b8-198f2957542e.jpg",
+      "https://i.ibb.co/BKjPRcdc/95648506-2903-4483-8b76-ee72e99a6cf3.jpg"
+    ];
+
+    for (let i = 0; i < images.length; i++) {
+      const angle = Math.PI - (i / images.length) * 2 * Math.PI;
+      const x = centerX + radius * 16 * Math.pow(Math.sin(angle), 3);
+      const y = centerY - radius * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle));
+      const img = document.createElement('img');
+      img.src = images[i];
+      img.classList.add('heart-image');
+      img.style.left = `${x}px`;
+      img.style.top = `${y}px`;
+      heartContainer.appendChild(img);
+    }
+  }
+
+  function launchFireworks() {
+    for (let i = 0; i < 10; i++) {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.left = `${Math.random() * 100}%`;
+      firework.style.top = `${Math.random() * 100}%`;
+      firework.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      document.body.appendChild(firework);
+      setTimeout(() => firework.remove(), 1000);
+    }
+  }
+</script>
+</body>
+</html>
